@@ -32,8 +32,7 @@ def plot_direct_pi(n_runs = 20, max_power = 8, fig_name=None):
     N_list = np.array(N_list)
     results_list = np.array(results_list)
     
-    plt.scatter(N_list, results_list, label="Results", color="red", zorder=2)
-    plt.plot(N_list, results_list, "--", zorder= 1)
+    plt.plot(N_list, results_list, "o-", label="Results", zorder=1)
     plt.xscale('log')
     plt.axhline(y = np.pi/4, linestyle="dashed", color="gray", label=r"$\pi / 4$", zorder=-1)
     plt.xlabel('Number of trials (log)')
@@ -60,8 +59,7 @@ def plot_direct_pi_msqrt_dev(n_runs = 20, max_power = 8, fig_name=None):
         sigma_list.append(np.sqrt(sum / N))
         N_list.append(N)
 
-    plt.plot(N_list, sigma_list, "--", zorder=1)
-    plt.scatter(N_list, sigma_list, label="Results", zorder=2, color="red")
+    plt.plot(N_list, sigma_list, "o-", label="Results", zorder=1)
     
     plt.xscale('log')
     plt.yscale('log')
@@ -107,8 +105,7 @@ def plot_markov_pi(n_runs, delta, fig_name=None):
     N_list = np.array(N_list)
     results_list = np.array(results_list)
     
-    plt.scatter(N_list, results_list, label="Results", color="red", zorder=2)
-    plt.plot(N_list, results_list, "--", zorder= 1)
+    plt.plot(N_list, results_list, "o-", zorder= 1, label="Results", zorder=1)
     plt.xscale('log')
     plt.axhline(y = np.pi/4, linestyle="dashed", color="gray", label=r"$\pi / 4$", zorder=-1)
     plt.xlabel('Number of trials (log)')
@@ -142,15 +139,14 @@ def plot_markov_pi_msqrt_dev_delta_list(n_runs, delta_list, fig_name=None):
             sigma_list.append(np.sqrt(sum / N))
             N_list.append(N)
         # plotting the result for each N_trials
-        plt.plot(N_list, sigma_list, "--")
-        plt.scatter(N_list, sigma_list, label = r'$\delta = $' + str(delta))
+        plt.plot(N_list, sigma_list, "o-", label = r'$\delta = $' + str(delta))
     
     # rest of the plot
     plt.xscale('log')
     plt.yscale('log')
     plt.xlabel('Number of trials (log)')
     plt.ylabel(r"$\left\langle (N_{\text{hits}/N}-\pi/4)^2\right\rangle$ (log)")
-    plt.title(r'Markov-chain sampling of $\pi$: root mean square deviation vs. N')
+    plt.title(r'Markov-chain sampling of $\pi$: mean square deviation vs. N')
     plt.legend(loc='upper right')
     plt.tight_layout()
     # if we choose so to save the image as a .png file.
@@ -176,8 +172,7 @@ def plot_markov_pi_rejected(n_runs, delta_list, fig_name=None):
             reject_list.append(mean_reject_rate_per_power)
             N_list.append(N)
         last_reject_sum += reject_list[-1] 
-        plt.plot(N_list, reject_list, "--")
-        plt.scatter(N_list, reject_list, label = r'$\delta = $' + str(delta))
+        plt.plot(N_list, reject_list, "o-", label = r'$\delta = $' + str(delta))
 
     plt.xscale('log')
     plt.xlabel('Number of trials (log)')
