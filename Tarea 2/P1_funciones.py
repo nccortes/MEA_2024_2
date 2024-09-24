@@ -15,7 +15,6 @@ def direct_pi(N):
         if (x**2 + y**2 < 1):
             N_hits += 1
     return N_hits / N
-
 #------------------------------------------------------------------------------------#
 def plot_direct_pi(n_runs=20, max_power=8, fig_name=None):
     N_list = []
@@ -49,7 +48,6 @@ def plot_direct_pi(n_runs=20, max_power=8, fig_name=None):
         file_path = cwd + "/P1/" + f"{fig_name}.png"
         plt.savefig(file_path)
     plt.show()
-
 #------------------------------------------------------------------------------------#
 def plot_direct_pi_msqrt_dev(n_runs=20, max_power=8, fig_name=None):
     N_list = []
@@ -79,7 +77,6 @@ def plot_direct_pi_msqrt_dev(n_runs=20, max_power=8, fig_name=None):
         file_path = cwd + "/P1/" + f"{fig_name}.png"
         plt.savefig(file_path)
     plt.show()
-
 #------------------------------------------------------------------------------------#
 def markov_pi(N, delta):
     x, y = 1.0, 1.0
@@ -91,7 +88,6 @@ def markov_pi(N, delta):
         if x**2 + y**2 < 1.0:
             n_hits += 1
     return n_hits / N
-
 #------------------------------------------------------------------------------------#
 def plot_markov_pi(n_runs, delta, fig_name=None):
     N_list = []
@@ -124,7 +120,6 @@ def plot_markov_pi(n_runs, delta, fig_name=None):
         file_path = cwd + "/P1/" + f"{fig_name}.png"
         plt.savefig(file_path)
     plt.show()
-
 #------------------------------------------------------------------------------------#
 def plot_markov_pi_msqrt_dev_delta_list(n_runs, delta_list, fig_name=None):
     for delta in delta_list:
@@ -134,7 +129,6 @@ def plot_markov_pi_msqrt_dev_delta_list(n_runs, delta_list, fig_name=None):
         for power in range(4, 13):
             N = 2**power
 
-            # Parallelized the sigma calculation for each delta
             deviations = Parallel(n_jobs=-1)(
                 delayed(lambda: (markov_pi(N, delta) - np.pi / 4)**2)() for _ in range(n_runs)
             )
@@ -154,7 +148,6 @@ def plot_markov_pi_msqrt_dev_delta_list(n_runs, delta_list, fig_name=None):
         file_path = cwd + "/P1/" + f"{fig_name}.png"
         plt.savefig(file_path)
     plt.show()
-
 #------------------------------------------------------------------------------------#
 def plot_markov_pi_rejected(n_runs, delta_list, fig_name=None):
     last_reject_sum = 0
@@ -165,7 +158,6 @@ def plot_markov_pi_rejected(n_runs, delta_list, fig_name=None):
         for poweroftwo in range(4, 13):
             N = 2 ** poweroftwo
 
-            # Parallelized the reject rate calculation
             reject_rates = Parallel(n_jobs=-1)(
                 delayed(lambda: 100 * (1 - markov_pi(N, delta)))() for _ in range(n_runs)
             )
