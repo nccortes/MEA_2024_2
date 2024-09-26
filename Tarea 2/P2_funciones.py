@@ -4,7 +4,7 @@ import os
 cwd = os.getcwd()
 #------------------------------------------------------------------------------------#
 # Utilized to show the different configurations and spin flips for a certain list of N spins
-def gray(N):
+def gray_show_binary(N):
     k = 1
     g = [[0], [1]]
     while k < N:

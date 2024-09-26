@@ -114,7 +114,7 @@ def plot_markov_pi(n_runs, delta, fig_name=None):
     plt.ylabel(r"$N_\text{hits}/ N$")
     plt.legend(loc="best")
     plt.xlim(min(N_list), max(N_list))
-    plt.title(r'$\mathtt{Markov\text{-}pi}$ results for $N = 10^1, \dots , 10^6$ and $\delta = $'+f"{delta}")
+    plt.title(r'$\mathtt{Markov\text{-}pi}$ results for $N = 10^1, \dots , 10^7 $ and $\delta = $'+f"{delta}")
     plt.tight_layout()
     if fig_name:
         file_path = cwd + "/P1/" + f"{fig_name}.png"
