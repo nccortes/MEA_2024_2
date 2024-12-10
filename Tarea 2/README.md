@@ -1,0 +1,2 @@
+# Tarea 2
+En el Jupyter Notebook [```tarea_2.ipynb```](tarea_2.ipynb) se encuentran los gráficos junto con comentarios sobre lo requerido en cada uno de los problemas de la tarea. En particular, en el **problema 3**, se utilizó el módulo ```joblib``` para correr el código en múltiples núcleos de la CPU, se debe ajustar el parámetro ```n_chains``` presente en algunas de las funciones del archivo ```P3_funciones.py``` acorde a la cantidad de núcleos del procesador que se deseen utilizar, en mi caso, mi laptop tenía 8 núcleos.
